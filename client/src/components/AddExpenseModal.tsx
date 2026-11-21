@@ -1,6 +1,7 @@
 import { categories } from "@/constants/expense"
 import { expenseSchema, type CreateExpenseSchema } from "@/schema/expense"
 import { Button } from "@/shared/ui/button"
+import { DatePicker } from "@/shared/ui/date-picker"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/shared/ui/dialog"
 import { FieldGroup } from "@/shared/ui/field"
 import { InputField } from "@/shared/ui/input-field"
@@ -24,12 +25,11 @@ const AddExpenseModal = ({ open, setOpen }: AddExpenseModalProps) => {
       title: "",
       amount: 0,
       category: "",
-      date: new Date(),
+      date: "",
     }
   })
 
 
-  console.log(form.watch())
 
   const handleSubmit = async (data: CreateExpenseSchema) => {
     console.log(data)
@@ -47,7 +47,7 @@ const AddExpenseModal = ({ open, setOpen }: AddExpenseModalProps) => {
             <InputField control={form.control} name="title" label="Title" />
             <FieldGroup className="flex flex-row gap-2">
               <InputField control={form.control} name="amount" type="number" label="Amount" placeholder="0.00" />
-              <InputField control={form.control} name="date" type="date" label="Date" />
+              <DatePicker control={form.control} label="Pick a date" name="date" />
             </FieldGroup>
             <SelectField control={form.control} name="category" label="Category" options={categoryOptions} />
             <Button type="submit" className="bg-eastern-blue cursor-pointer">Add Expense</Button>
