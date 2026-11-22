@@ -1,16 +1,9 @@
-import { useState } from 'react'
-import AddExpenseModal from './components/AddExpenseModal'
-import Header from './components/Header'
-import "./index.css"
+import "@/index.css"
+import HomePage from '@/pages/HomePage'
 
 function App() {
-  const [openAddExpenseModal, setOpenAddExpenseModal] = useState<boolean>(false)
-
   return (
-    <>
-      <Header openModal={setOpenAddExpenseModal} />
-      <AddExpenseModal open={openAddExpenseModal} setOpen={setOpenAddExpenseModal} />
-    </>
+    <HomePage />
   )
 }
 

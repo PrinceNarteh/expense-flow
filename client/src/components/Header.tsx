@@ -1,7 +1,8 @@
 import { Plus, Wallet } from "lucide-react"
+import type { Dispatch, SetStateAction } from "react"
 
 interface HeaderProps {
-  openModal: (open: boolean) => void
+  openModal: Dispatch<SetStateAction<boolean>>
 }
 
 const Header = ({ openModal }: HeaderProps) => {

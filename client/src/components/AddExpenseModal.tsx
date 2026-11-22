@@ -6,12 +6,16 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { FieldGroup } from "@/shared/ui/field"
 import { InputField } from "@/shared/ui/input-field"
 import { SelectField } from "@/shared/ui/select-field"
+import type { IExpense } from "@/types/expense"
 import { zodResolver } from "@hookform/resolvers/zod"
+import type { Dispatch, SetStateAction } from "react"
 import { useForm } from "react-hook-form"
 
 interface AddExpenseModalProps {
   open: boolean,
-  setOpen: (open: boolean) => void
+  expenses: IExpense[]
+  setOpen: Dispatch<SetStateAction<boolean>>
+  setExpenses: Dispatch<SetStateAction<IExpense[]>>
 }
 
 const categoryOptions = categories.map(c => ({
