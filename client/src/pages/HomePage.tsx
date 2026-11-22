@@ -14,8 +14,8 @@ function HomePage() {
       <AddExpenseModal
         expenses={expenses}
         setExpenses={setExpenses}
-        open={openAddExpenseModal}
-        setOpen={setOpenAddExpenseModal}
+        openAddExpenseModal={openAddExpenseModal}
+        setOpenAddExpenseModal={setOpenAddExpenseModal}
       />
     </>
   )

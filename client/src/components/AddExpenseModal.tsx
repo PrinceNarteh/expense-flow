@@ -12,35 +12,40 @@ import type { Dispatch, SetStateAction } from "react"
 import { useForm } from "react-hook-form"
 
 interface AddExpenseModalProps {
-  open: boolean,
   expenses: IExpense[]
-  setOpen: Dispatch<SetStateAction<boolean>>
+  openAddExpenseModal: boolean,
   setExpenses: Dispatch<SetStateAction<IExpense[]>>
+  setOpenAddExpenseModal: Dispatch<SetStateAction<boolean>>
 }
+const defaultValues: CreateExpenseSchema = {
+  title: "",
+  amount: 0,
+  category: "",
+  date: new Date(),
+}
+
 
 const categoryOptions = categories.map(c => ({
   label: c, value: c
 }))
 
-const AddExpenseModal = ({ open, setOpen }: AddExpenseModalProps) => {
+const AddExpenseModal = ({ openAddExpenseModal, setOpenAddExpenseModal, expenses, setExpenses }: AddExpenseModalProps) => {
   const form = useForm<CreateExpenseSchema>({
     resolver: zodResolver(expenseSchema),
-    defaultValues: {
-      title: "",
-      amount: 0,
-      category: "",
-      date: "",
-    }
+    defaultValues
   })
 
-
-
   const handleSubmit = async (data: CreateExpenseSchema) => {
-    console.log(data)
+    const newExpense: CreateExpenseSchema = {
+      id: expenses.length.toString(),
+      ...data
+    }
+    setExpenses([...expenses, newExpense])
+    setOpenAddExpenseModal(false)
   }
 
   return (
-    <Dialog open={open} onOpenChange={() => setOpen(false)}>
+    <Dialog open={openAddExpenseModal} onOpenChange={() => setOpenAddExpenseModal(false)}>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
           <DialogTitle className="text-eastern-blue text-2xl font-bold">Add Expense</DialogTitle>
