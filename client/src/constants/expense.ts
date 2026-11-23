@@ -9,8 +9,15 @@ export type ICategory =
   | "Other";
 
 export const categories = [
-  "Bills", "Education", "Entertainment", "Food", "Health", "Shopping", "Transport", "Other"
-] as const
+  "Bills",
+  "Education",
+  "Entertainment",
+  "Food",
+  "Health",
+  "Shopping",
+  "Transport",
+  "Other",
+] as const;
 
 export const CATEGORIES = [
   { label: "Bills", value: "Bills" },
@@ -44,4 +51,3 @@ export const CATEGORY_COLORS: Record<ICategory, string> = {
   Education: "hsl(270, 55%, 50%)",
   Other: "hsl(225, 12%, 48%)",
 };
-

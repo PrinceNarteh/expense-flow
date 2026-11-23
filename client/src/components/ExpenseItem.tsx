@@ -1,7 +1,7 @@
 import { CATEGORY_ICON } from "@/constants/expense";
 import { useExpenseForm } from "@/hooks/useExpenseForm";
 import { useGlobalState } from "@/hooks/useGlobalState";
-import type { IExpense } from "@/types/expense";
+import type { IExpense } from "@/schema/expense";
 import { SquarePen, Trash } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -21,7 +21,7 @@ const ExpenseItem = ({ expense }: ExpenseItemProps) => {
 
   useEffect(() => {
     if (openModal && selectedExpense) {
-      form.reset(selectedExpense);
+      form.reset({});
     }
   }, [openModal, selectedExpense]);
 

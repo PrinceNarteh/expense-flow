@@ -1,7 +1,7 @@
-import { categories } from "@/constants/expense";
+import { CATEGORIES } from "@/constants/expense";
 import { useExpenseForm } from "@/hooks/useExpenseForm";
 import { useGlobalState } from "@/hooks/useGlobalState";
-import type { CreateExpenseSchema } from "@/schema/expense";
+import type { IExpense } from "@/schema/expense";
 import { Button } from "@/shared/ui/button";
 import { DatePicker } from "@/shared/ui/date-picker";
 import {
@@ -14,18 +14,12 @@ import {
 import { FieldGroup } from "@/shared/ui/field";
 import { InputField } from "@/shared/ui/input-field";
 import { SelectField } from "@/shared/ui/select-field";
-import type { IExpense } from "@/types/expense";
-
-const categoryOptions = categories.map((c) => ({
-  label: c,
-  value: c,
-}));
 
 const AddExpenseModal = () => {
   const { expenses, addExpense, openModal, setOpenModal } = useGlobalState();
   const { form } = useExpenseForm();
 
-  const handleSubmit = async (data: CreateExpenseSchema) => {
+  const handleSubmit = async (data: IExpense) => {
     const newExpense: IExpense = {
       id: expenses.length.toString(),
       ...data,
@@ -67,7 +61,7 @@ const AddExpenseModal = () => {
               control={form.control}
               name="category"
               label="Category"
-              options={categoryOptions}
+              options={CATEGORIES}
             />
             <Button type="submit" className="bg-eastern-blue cursor-pointer">
               Add Expense
