@@ -1,8 +1,9 @@
 import AddExpenseModal from '@/components/AddExpenseModal'
 import Card from '@/components/Card'
+import ExpenseList from '@/components/ExpenseList'
 import Header from '@/components/Header'
 import "@/index.css"
-import type { IExpense } from '@/types/expense'
+import type { IExpense } from '@/schema/expense'
 import { useState } from 'react'
 
 function HomePage() {
@@ -20,7 +21,9 @@ function HomePage() {
             <Card title='Top Categories'>TopCategories</Card>
           </div>
           <Card className="col-span-2" title='Recent Transactions'>
-            {expenses.length ? <></> :
+            {expenses.length ? <>
+              <ExpenseList expenses={expenses} />
+            </> :
               <article className='text-center text-gray-500'>
                 <h6 className='font-semibold'>No Expenses Yet</h6>
                 <p className='text-sm'>Add your first expenses to get started</p>

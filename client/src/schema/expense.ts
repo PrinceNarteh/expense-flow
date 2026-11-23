@@ -9,4 +9,4 @@ export const expenseSchema = z.object({
   date: z.date({ error: "Please pick a date." })
 })
 
-export type CreateExpenseSchema = z.infer<typeof expenseSchema>
+export type IExpense = z.infer<typeof expenseSchema>
